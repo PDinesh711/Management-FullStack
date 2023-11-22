@@ -1,0 +1,130 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">College Management</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li  class="nav-item" style="margin-left: 40px;">
+            <span style="color: blue; cursor: pointer;">Home</span>
+          </li>
+          <li class="nav-item" style="margin-left: 40px;" >
+            <span routerLink = '/college' style="cursor: pointer;">College</span>
+          </li>
+          <li class="nav-item" style="margin-left: 40px;">
+           <span routerLink = '/student' style="cursor: pointer;">Student</span>
+          </li>
+          <li class="nav-item" style="margin-left: 40px;">
+            <span routerLink = '/teacher' style="cursor: pointer;">Teacher</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+<div class="container">
+  <!-- college -->
+  <div class="row w-100 justify-content-center">
+    <div class="col-12">
+      <div class="col-7 card mt-4">
+        <div class="card-header text-center">
+          Add College Details 
+        </div>
+        <div class="card-body">
+          <div class="row mt-3">
+            <label for="">College Name</label>
+            <input type="text" class="form-control" [(ngModel)]="clg.collegeName">
+          </div>
+          <div class="row mt-3">
+            <label for="">College Rank</label>
+            <input type="number" class="form-control" [(ngModel)]="clg.collegeRank">
+          </div>
+          <div class="row mt-3">
+            <label for="">College Type </label>
+            <select class="form-control" [(ngModel)]="clg.collegeType">
+              <option value="">select</option>
+              <option value="Govt">Govt</option>
+              <option value="Private">Private</option>
+            </select>
+          </div>
+        </div>
+        <div class="card-footer text-body-secondary text-center mt-3">
+         <button class="btn btn-primary" (click)="createCollege()">Add College </button>
+        </div>
+      </div>
+    
+      <!-- student -->
+      <div class="col-7 card mt-5">
+        <div class="card-header text-center">
+          Add Student Details 
+        </div>
+        <div class="card-body">
+          <div class="row mt-3">
+            <label for="">Student Name</label>
+            <input type="text" class="form-control" [(ngModel)]="student.StudentName">
+          </div>
+          <div class="row mt-3">
+            <label for="">Student Email</label>
+            <input type="text" class="form-control" [(ngModel)]="student.studentEmail">
+          </div>
+          <div class="row mt-3">
+            <label for="">Student Department </label>
+            <select class="form-control" [(ngModel)]="student.studentDepartment">
+              <option value="" >select</option>
+              <option *ngFor="let teacher of teacherArray" [value]="teacher.teacherSubject">{{teacher.teacherSubject}}</option>
+            </select>
+          </div>
+          <div class="row mt-3">
+            <label for="">Student Age</label>
+            <input type="number" class="form-control" [(ngModel)]="student.studentAge">
+          </div>
+          <div class="row mt-3">
+            <label for="">Student Phone</label>
+            <input type="text" class="form-control" [(ngModel)]="student.studentPhone">
+          </div>
+          <div class="row mt-3">
+            <label for="">Student Fees</label>
+            <input type="number" class="form-control" [(ngModel)]="student.studentFees">
+          </div>
+        </div>
+        <div class="card-footer text-body-secondary text-center mt-3">
+         <button class="btn btn-primary" (click)="createStudent()">Add Student </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Teacher -->
+  <div class="col-7 card mt-5 mb-5">
+    <div class="card-header text-center">
+      Add Teacher Details 
+    </div>
+    <div class="card-body">
+      <div class="row mt-3">
+        <label for="">Teacher Name</label>
+        <input type="text" class="form-control" [(ngModel)]="teacher.teacherName">
+      </div>
+      <div class="row mt-3">
+        <label for="">Teacher Salary</label>
+        <input type="number" class="form-control" [(ngModel)]="teacher.teacherSalary">
+      </div>
+      <div class="row mt-3">
+        <label for="">Teacher Subject </label>
+        <select class="form-control" [(ngModel)]="teacher.teacherSubjet">
+          <option value="">select</option>
+          <option value="IT">IT</option>
+          <option value="CSE">CSE</option>
+          <option value="Mechanical">Mechanical</option>
+          <option value="ECE">ECE</option>
+          <option value="EEE">EEE</option>
+          <option value="AI/DS">AI/DS</option>
+          <option value="CSB">CSB</option>
+        </select>
+      </div>
+     
+    </div>
+    <div class="card-footer text-body-secondary text-center mt-3">
+     <button class="btn btn-primary" (click)="createTeacher()">Add Teacher </button>
+    </div>
+  </div>
+
+</div>

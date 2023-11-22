@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">College Management</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li  class="nav-item" style="margin-left: 40px;">
+            <span routerLink='/home' style="cursor: pointer;">Home</span>
+          </li>
+          <li class="nav-item" style="margin-left: 40px;" >
+            <span routerLink = '/college' style="cursor: pointer;">College</span>
+          </li>
+          <li class="nav-item" style="margin-left: 40px;">
+           <span routerLink = '/student' style="cursor: pointer;">Student</span>
+          </li>
+          <li class="nav-item" style="margin-left: 40px;">
+            <span style="color: blue; cursor: pointer;">Teacher</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+<table class="container table table-dark table-stiped">
+  <thead>
+    <tr>
+      <th>Teacher ID</th>
+      <td>Teacher Name</td>
+      <td>Teacher Subject</td>
+      <td>Student Salary </td>
+      <td>Edit</td>
+      <td>Delete</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let teacher of teacherArray">
+      <th> {{teacher.id}} </th>
+      <td> {{teacher.teacherName}} </td> 
+      <td> {{teacher.teacherSubject}} </td>
+      <td> {{teacher.teacherSalary}} </td>
+      <td><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#EditTeacher" (click)="edit(teacher.id)">Edit</button>
+        <div class="modal fade text-dark" id="EditTeacher" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5">Edit Student </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="row mt-3">
+                  <label for="">Teacher Name</label>
+                  <input type="text" class="form-control" [(ngModel)]="teacher1.teacherName">
+                </div>
+                <div class="row mt-3">
+                  <label for="">Teacher Salary</label>
+                  <input type="number" class="form-control" [(ngModel)]="teacher1.teacherSalary">
+                </div>
+                <div class="row mt-3">
+                  <label for="">Teacher Subject </label>
+                  <select class="form-control" [(ngModel)]="teacher1.teacherSubjet">
+                    <option value="">select</option>
+                    <option value="IT">IT</option>
+                    <option value="CSE">CSE</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="ECE">ECE</option>
+                    <option value="EEE">EEE</option>
+                    <option value="AI/DS">AI/DS</option>
+                    <option value="CSB">CSB</option>
+                  </select>
+                </div>
+               
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateTeacher()" >Edit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td><button class="btn btn-danger" (click)="removeTeacher(teacher.id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
